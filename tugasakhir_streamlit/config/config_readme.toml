@@ -1,0 +1,134 @@
+[app]
+app_definition = """
+Dashboard 4G LTE merupakan dashboard yang dirancang dengan tujuan untuk melakukan prediksi throughput-downlink dengan metode machine learning.
+"""
+
+app_rules = """
+Berikut adalah beberapa bagian utama dalam Dashboard 4G LTE :
+* __Loading Data__: Dapat menggunakan dataset existing atau upload. 
+* __Feature Selection__: Dapat melakukan pemilihan fitur fitur tertentu untuk melakukan prediksi throughput-downlink pada berbagai model untuk visualiasi. 
+* __Modelling and Evaluation__: Setelah melakukan pemilihan  fitur, pengguna dapat melakukan pemilihan regressor dan train test size untuk model visualisasi serta dapat menampilkan 4 (empat) fitur metric performance untuk evaluasi model. \n
+
+"""
+
+app_correlation = """
+Plot visualisasi Correlation Heatmap Matrix dapat membantu pengguna untuk memilih parameter yang dianggap memiliki korelasi yang kuat dalam memprediksi model sehingga yang wajib user lakukan adalah:
+* Pilih minimal 3 (tiga) nilai yang memiliki korelasi cukup kuat dari pemetaan antara target prediksi __(DL_bitrate)__ dengan fitur konektivitas jaringan
+* Pembacaaan nilai dilakukan hanya cukup dengan melihat besaran nya saja serta untuk tanda "+" dan "-" dapat diabaikan
+* Ketiga fitur terpilih akan dijadikan masukan untuk melakukan tahapan __"Choose Feature Column"__ di bagian sidebar dashboard pada __"2. Feature Selection"__
+
+"""
+
+app_visualization = """
+* kurva bewarna biru mewakili data __Actual__  
+* kurva bewarna kuning mewakili data __Predicted__ 
+* Sumbu Y mewakili nilai __throughput__ (dalam Bps) 
+* Sumbu X mewakili nilai __time__ (dalam sekon). \n
+
+"""
+app_performance = """
+Berikut adalah deskripsi beberapa metric yang digunakan dalam mengukur evaluasi performance model :
+* __R Squared Score (R2 Score)__: Ukuran statistik yang dilakukan terhadap variabel dependen atau variabel terikat dan dua atau lebih variabel bebas atau independen. Berbeda dengan regresi sederhana yang hanya memiliki satu variabel independen dan satu varaibel dependen.
+* __Mean Squared Error (MSE)__: Ukuran perbedaan kuadrat rata-rata antara forecast dan nilai true.
+* __Root Mean Squared Error (RMSE)__: Akar kuadrat dari MSE juga merupakan besarnya tingkat kesalahan hasil prediksi, dimana semakin kecil (mendekati 0) nilai RMSE, maka hasil prediksi akan semakin akurat
+* __Mean Absolute Error (MAE)__: Mengukur rata-rata kesalahan absolut. Metrik ini dapat diartikan sebagai jarak rata-rata absolut antara kemungkinan kecocokan terbaik dan estimasi. \n
+
+"""
+show_visual = """
+Setelah memilih tipe regressor, user dapat menjalankan visualisasi hasil prediksi __Throughput vs Time__ dengan melakukan centang kotak
+"""
+
+metric_criteria = """
+Berikut terdapat beberapa kriteria yang wajib dipahami pengguna dalam mempelajari nilai setiap metric performance :
+
+__1. R Squared Score (R2 Score)__
+    Untuk R Squared, beberapa kriteria yang wajib diketahui oleh pengguna adalah rentang nilai wajib berada di interval __-∞ hingga 1__ , jika nilai dihasilkan semakin mendekati 1 maka model yang dihasilkan akan semakin cocok dengan data yang lebih baik
+    
+__2. Mean Squared Error (MSE)__
+    Untuk Mean Squared Error (MSE), __semakin rendah nilai MSE__ maka semakin menunjukkan bahwa model yang digunakan memiliki akurasi yang cukup baik
+
+__3. Root Mean Squared Error (RMSE)__
+     Untuk Root Mean Squared Error (RMSE), __semakin rendah nilai RMSE__ maka semakin menunjukkan bahwa model yang digunakan memiliki akurasi yang cukup baik
+    
+__4. Mean Absolute Error (MAE)__
+    Untuk Mean Absolute Error (MAE), __semakin rendah nilai MAE__ maka semakin menunjukkan bahwa model yang digunakan memiliki akurasi yang cukup baik.
+    \n
+
+"""
+
+[tooltips]
+existing_upload = """
+Existing Dataset terdiri dari 6 (enam) buah file yang tersedia dari sistem dashboard dimana isi keenam file berupa data hasil pengukuran throughput menggunakan aplikasi G Net Track dan wajib memuat beberapa target column antara lain:
+* __Timestamp__: waktu yang dicatat saat pengukuran dilakukan
+* __Longitude__: merupakan salah satu bagian koordinat GPS perangkat seluler
+* __Lattitude__: merupakan salah satu bagian koordinat GPS perangkat seluler
+* __Speed__: parameter kecepatan bus pada saat pengukuran dilakukan (dalam satuan km/jam),  serta dihitung dari data GPS
+* __Operator__: kode negara seluler (MCC) dan kode jaringan seluler (MNC),  yang keduanya digunakan untuk mengidentifikasi operator jaringan seluler secara unik
+* __CellID__: ID sel unik dari sel yang melayani
+* __LAC__: Kode Area Lokasi sel yang melayani, pengidentifikasi unik yang digunakan oleh setiap jaringan seluler darat (PLMN) untuk lokasi pelanggan seluler.
+* __RSSI__: indikator kekuatan sinyal yang diterima, ukuran daya yang ada dalam sinyal radio yang diterima.
+* __RSRP__: sinyal referensi menerima daya; ini adalah ukuran kekuatan sinyal referensi LTE yang tersebar di full bandwidth dan narrowband.
+* __RSRQ__: kualitas sinyal referensi yang diterima, menunjukkan kualitas sinyal referensi yang diterima.
+* __SNR__: rasio signal-to-noise, yang merupakan rasio kekuatan sinyal dengan kekuatan kebisingan, dinyatakan dalam desibel.
+* __DL_Bitrate__: bitrate downlink saat ini pada saat pengukuran dinyatakan dalam kbps. __(Fitur Utama dalam pengukuran)__
+* __UPL_Bitrate__: bitrate uplink saat ini pada saat pengukuran dinyatakan dalam kbps.
+"""
+
+data_upload = """
+File yang diunggah merupakan file yang isinya terdiri dari data hasil pengukuran throughput menggunakan aplikasi G Net Track dan wajib memuat beberapa target column antara lain:
+* __Timestamp__: waktu yang dicatat saat pengukuran dilakukan
+* __Longitude__: merupakan salah satu bagian koordinat GPS perangkat seluler
+* __Lattitude__: merupakan salah satu bagian koordinat GPS perangkat seluler
+* __Speed__: parameter kecepatan bus pada saat pengukuran dilakukan (dalam satuan km/jam), serta dihitung dari data GPS
+* __Operator__: kode negara seluler (MCC) dan kode jaringan seluler (MNC), yang digunakan bersama untuk mengidentifikasi operator jaringan seluler secara unik
+* __CellID__: ID sel unik dari sel yang melayani
+* __LAC__: Kode Area Lokasi sel yang melayani, pengidentifikasi unik yang digunakan oleh setiap jaringan seluler darat (PLMN) untuk lokasi pelangganseluler.
+* __RSSI__: indikator kekuatan sinyal yang diterima, ukuran daya yang ada dalam sinyal radio yang diterima.
+* __RSRP__: sinyal referensi menerima daya; ini adalah ukuran kekuatan sinyal referensi LTE yang tersebar di full bandwidth dan narrowband.
+* __RSRQ__: kualitas sinyal referensi yang diterima, menunjukkan kualitas sinyal referensi yang diterima.
+* __SNR__: rasio signal-to-noise, yang merupakan rasio kekuatan sinyal dengan kekuatan kebisingan, dinyatakan dalam desibel.
+* __DL_Bitrate__: bitrate downlink saat ini pada saat pengukuran dinyatakan dalam kbps. __(Fitur Utama dalam pengukuran)__
+* __UPL_Bitrate__: bitrate uplink saat ini pada saat pengukuran dinyatakan dalam kbps.
+"""
+ 
+error_message = """
+Not Implemented Error
+"""
+
+select_files = """
+Silahkan pilih salah satu file yang digunakan untuk pengukuran prediksi throughput
+"""
+
+select_feature = """
+Pilih beberapa fitur yang digunakan dalam memodelkan data untuk visualiasi __Throughput vs Time__  untuk mendapatkan akurasi model lebih baik
+"""
+
+show_heatmap = """
+Sebelum melakukan pemilihan fitur column, pengguna dianjurkan untuk melakukan pengamatan visualiasi correlation heatmap untuk menampilkan pemetaan korelasi antar __target feature__  dengan fitur lain yang saling berkorelasi
+"""
+
+cekbox_pca = """
+PCA merupakan fitur opsional untuk mereduksi sejumlah minimal 3 (tiga) fitur yang terpilih dari "choose features" menjadi suatu fitur baru berukuran 1-Dimensi
+"""
+select_pca = """
+Pilih minimal 3 (tiga) fitur yang dianggap memiliki korelasi kuat 
+berdasarkan apa yang anda amati di Correlation Heatmap
+"""
+train_test_split = """
+proporsi default yaitu 0.5, tetapi pengguna dibebaskan untuk 
+menentukan jumlah proporsi data train dan data test
+"""
+regressor = """
+Pilih salah satu tipe algoritma yang digunakan untuk proses model visualization
+"""
+
+knn = """
+pengguna dapat menggeser nilai __nearest neighbor__ dari __1 hingga 20__ dengan default sebesar 5  
+"""
+
+random_forest = """
+pengguna dapat menggeser nilai __estimator__ dari __10 hingga 1000__ dengan default sebesar 100
+"""
+ada_boost = """
+pengguna dapat menggeser nilai estimator dari __10 hingga 1000 dengan default sebesar 10
+"""
